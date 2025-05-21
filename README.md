@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-- Rust programming language and Cargo package manager.
+- Rust (developed using `rustc 1.87.0`).
 
 ## Building
 
