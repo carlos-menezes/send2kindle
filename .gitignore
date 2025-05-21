@@ -1,0 +1,5 @@
+/target
+
+run.sh
+# test files sent to Kindle
+*.test.*

@@ -1,0 +1,14 @@
+[package]
+name = "send_to_kindle"
+version = "0.1.0"
+edition = "2024"
+
+
+[[bin]]
+name = "send2kindle"
+path = "src/main.rs"
+
+[dependencies]
+chrono = "0.4.41"
+clap = { version = "4.5.38", features = ["derive"] }
+lettre = "0.11"
