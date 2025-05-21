@@ -24,13 +24,13 @@ send2kindle --smtp-server <SMTP_SERVER_URL> --smtp-username <SMTP_USERNAME> --sm
 
 Arguments:
 
-`--smtp-server <SMTP_SERVER_URL>`: The URL of your SMTP server (e.g., `smtp.gmail.com`).
-`--smtp-username <SMTP_USERNAME>`: Your SMTP username.
-`--smtp-password <SMTP_PASSWORD>`: Your SMTP password.
-`--kindle-email <KINDLE_EMAIL_ADDRESS>`: Your Kindle's email address.
-`--file <FILE_PATH>`: Path to the file you want to send.
-`--stdin`: Read the file content from standard input.
-`--filename <FILENAME_OVERRIDE>` (optional): Override the filename for the attachment. If not provided and `--file` is used, the original filename will be used. **This is required if using `--stdin`.**
+- `--smtp-server <SMTP_SERVER_URL>`: The URL of your SMTP server (e.g., `smtp.gmail.com`).
+- `--smtp-username <SMTP_USERNAME>`: Your SMTP username.
+- `--smtp-password <SMTP_PASSWORD>`: Your SMTP password.
+- `--kindle-email <KINDLE_EMAIL_ADDRESS>`: Your Kindle's email address.
+- `--file <FILE_PATH>`: Path to the file you want to send.
+- `--stdin`: Read the file content from standard input.
+- `--filename <FILENAME_OVERRIDE>` (optional): Override the filename for the attachment. If not provided and `--file` is used, the original filename will be used. **This is required if using - `--stdin`.**
 
 ## Examples
 
