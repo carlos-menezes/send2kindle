@@ -1,26 +1,47 @@
-# send2kindle
+# send_to_kindle
 
-Send any [supported file](https://www.amazon.com/gp/help/customer/display.html?nodeId=G5WYD9SAF7PGXRNA) to Kindle via SMTP.
+`send_to_kindle` is a command-line utility to send documents to your Kindle email address.
+
+## Prerequisites
+
+- Rust programming language and Cargo package manager.
+
+## Building
+
+To build the project, navigate to the project directory and run:
 
 ```sh
-send2kindle --smtp-username "my-gmail@gmail.com" --smtp-password "my-app-password" --smtp-server "smtp.gmail.com" --kindle-email "my-amazon-email+amazon_id@kindle.com" <--stdin | --file> [--filename "send2kindle.pdf"]
+cargo build [--release]
 ```
 
-## Running
+## Usage
 
-### Prerequisites
+The program requires several command-line arguments to function:
 
-- `--smtp-username` must be whitelisted in the Kindle email settings:
-  - Check your Kindle email[0] and whitelisted emails [here](https://www.amazon.com/hz/mycd/myx#/home/settings/payment);
-    - [0]: Optionally, check your Kindle settings.
-- If using Google Mail, you may need to pass an [App Password](https://support.google.com/accounts/answer/185833?hl=en) instead of your password in `--smtp-password`.
+```sh
+send2kindle --smtp-server <SMTP_SERVER_URL> --smtp-username <SMTP_USERNAME> --smtp-password <SMTP_PASSWORD> --kindle-email <KINDLE_EMAIL_ADDRESS> (--file <FILE_PATH> | --stdin) [--filename <FILENAME_OVERRIDE>]
+```
 
-### Read file from filename
+Arguments:
 
-TODO.
+`--smtp-server <SMTP_SERVER_URL>`: The URL of your SMTP server (e.g., `smtp.gmail.com`).
+`--smtp-username <SMTP_USERNAME>`: Your SMTP username.
+`--smtp-password <SMTP_PASSWORD>`: Your SMTP password.
+`--kindle-email <KINDLE_EMAIL_ADDRESS>`: Your Kindle's email address.
+`--file <FILE_PATH>`: Path to the file you want to send.
+`--stdin`: Read the file content from standard input.
+`--filename <FILENAME_OVERRIDE>` (optional): Override the filename for the attachment. If not provided and `--file` is used, the original filename will be used. **This is required if using `--stdin`.**
 
-### Input from `stdin`
+## Examples
 
-When using `--stdin`, `--filename` must be specified **including an extension**.
+### Send a file
 
-TODO.
+```sh
+send2kindle --smtp-server smtp.gmail.com:587 --smtp-username your_email@gmail.com --smtp-password your_password --kindle-email your_kindle@kindle.com --file ./invoice.test.pdf
+```
+
+### Send data from stdin
+
+```sh
+cat ./my.pdf | send2kindle --smtp-server smtp.gmail.com:587 --smtp-username your_email@gmail.com --smtp-password your_password --kindle-email your_kindle@kindle.com --stdin --filename "renamed.my.pdf"
+```
