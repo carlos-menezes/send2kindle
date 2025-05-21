@@ -17,3 +17,5 @@ cargo run -- --smtp-username "your-email@gmail" --smtp-password "your-app.passwo
 ```sh
 cat my_file.pdf | cargo run -- --smtp-username "your-email@gmail" --smtp-password "your-app.password" --to-email "your_amazon_email+amazon_id@kindle.com" --from-email "kindle_whitelisted_email" --smtp-server "smtp_server_ip" --stdin
 ```
+
+File name can be overriden with `--filename`.
