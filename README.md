@@ -1,21 +1,26 @@
 # send2kindle
 
-Still a work in progress.
+Send any [supported file](https://www.amazon.com/gp/help/customer/display.html?nodeId=G5WYD9SAF7PGXRNA) to Kindle via SMTP.
 
-[Check your Kindle email and whitelisted emails here.](https://www.amazon.com/hz/mycd/myx#/home/settings/payment)
+```sh
+send2kindle --smtp-username "my-gmail@gmail.com" --smtp-password "my-app-password" --smtp-server "smtp.gmail.com" --kindle-email "my-amazon-email+amazon_id@kindle.com" <--stdin | --file> [--filename "send2kindle.pdf"]
+```
 
 ## Running
 
+### Prerequisites
+
+- `--smtp-username` must be whitelisted in the Kindle email settings:
+  - Check your Kindle email[0] and whitelisted emails [here](https://www.amazon.com/hz/mycd/myx#/home/settings/payment);
+    - [0]: Optionally, check your Kindle settings.
+- If using Google Mail, you may need to pass an [App Password](https://support.google.com/accounts/answer/185833?hl=en) instead of your password in `--smtp-password`.
+
 ### Read file from filename
 
-```sh
-cargo run -- --smtp-username "your-email@gmail" --smtp-password "your-app.password" --to-email "your_amazon_email+amazon_id@kindle.com" --from-email "kindle_whitelisted_email" --smtp-server "smtp_server_ip" --file my_file.pdf
-```
+TODO.
 
 ### Input from `stdin`
 
-```sh
-cat my_file.pdf | cargo run -- --smtp-username "your-email@gmail" --smtp-password "your-app.password" --to-email "your_amazon_email+amazon_id@kindle.com" --from-email "kindle_whitelisted_email" --smtp-server "smtp_server_ip" --stdin
-```
+When using `--stdin`, `--filename` must be specified **including an extension**.
 
-File name can be overriden with `--filename`.
+TODO.

@@ -22,7 +22,7 @@ pub(crate) fn build_email(
 
     let from = Mailbox::new(
         None,
-        config.email.from.parse().unwrap_or_else(|error| {
+        config.smtp_config.username.parse().unwrap_or_else(|error| {
             println!("[error] {}", error);
             exit(1);
         }),
@@ -30,7 +30,7 @@ pub(crate) fn build_email(
 
     let to = Mailbox::new(
         None,
-        config.email.to.parse().unwrap_or_else(|error| {
+        config.kindle_email.parse().unwrap_or_else(|error| {
             println!("[error] {}", error);
             exit(1);
         }),
@@ -59,11 +59,11 @@ pub(crate) fn send_email(
     config: &config::Config,
 ) -> Result<lettre::transport::smtp::response::Response, lettre::transport::smtp::Error> {
     let credentials = Credentials::new(
-        config.smtp.username.to_owned(),
-        config.smtp.password.to_owned(),
+        config.smtp_config.username.to_owned(),
+        config.smtp_config.password.to_owned(),
     );
 
-    let mailer = SmtpTransport::relay(&config.smtp.server_url)?
+    let mailer = SmtpTransport::relay(&config.smtp_config.server_url)?
         .credentials(credentials)
         .build();
 

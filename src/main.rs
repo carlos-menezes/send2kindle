@@ -15,22 +15,13 @@ fn main() {
             username: &args.smtp_username,
             password: &args.smtp_password,
         },
-        config::EmailConfig {
-            from: &args.from_email,
-            to: &args.to_email,
-        },
+        &args.kindle_email,
     );
 
     let filename = match &args.filename {
         Some(filename_override) => filename_override,
         None => {
-            if args.stdin {
-                // If `stdin` is used, create a file name with the date and time
-                // in the format YYYY-MM-DD_HH-MM-SS.pdf
-                let now = chrono::Local::now();
-                let out = now.format("%Y-%m-%d_%H-%M-%S");
-                &format!("{}.pdf", out)
-            } else if args.file.is_some() {
+            if args.file.is_some() {
                 // if a file is provided, use the filename
                 &args.file.clone().unwrap()
             } else {
@@ -53,10 +44,6 @@ fn main() {
             exit(1);
         }),
         None => (),
-    }
-
-    if !files::is_pdf_file(&filebody) {
-        println!("[error] `{}` is not a PDF", filename);
     }
 
     println!("[info] sending {} to Kindle", filename);
