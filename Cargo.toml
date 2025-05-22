@@ -5,6 +5,7 @@ edition = "2024"
 authors = ["Carlos Menezes <talk@carlos-menezes.com>"]
 description = "`send2kindle` is a command-line utility to send documents to your Kindle."
 repository = "https://github.com/carlos-menezes/send2kindle"
+license = "MIT"
 
 [[bin]]
 name = "send2kindle"
