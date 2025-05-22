@@ -1,10 +1,10 @@
-# send_to_kindle
+# send2kindle
 
-`send_to_kindle` is a command-line utility to send documents to your Kindle email address.
+`send2kindle` is a command-line utility to send documents to your Kindle email address.
 
 ## Prerequisites
 
-- Rust (developed using `rustc 1.87.0`).
+- `rustc >= 1.87.0`
 
 ## Building
 
@@ -30,18 +30,18 @@ Arguments:
 - `--kindle-email <KINDLE_EMAIL_ADDRESS>`: Your Kindle's email address.
 - `--file <FILE_PATH>`: Path to the file you want to send.
 - `--stdin`: Read the file content from standard input.
-- `--filename <FILENAME_OVERRIDE>` (optional): Override the filename for the attachment. If not provided and `--file` is used, the original filename will be used. **This is required if using - `--stdin`.**
+- `--filename <FILENAME_OVERRIDE>` (optional): Override the filename for the attachment. If not provided and `--file` is used, the original filename will be used. **This is required if using `--stdin`.**
 
 ## Examples
 
 ### Send a file
 
 ```sh
-send2kindle --smtp-server smtp.gmail.com:587 --smtp-username your_email@gmail.com --smtp-password your_password --kindle-email your_kindle@kindle.com --file ./invoice.test.pdf
+send2kindle --smtp-server "smtp.gmail.com:587" --smtp-username "your_email@gmail.com" --smtp-password "your_password" --kindle-email "your_kindle@kindle.com" --file ./invoice.test.pdf
 ```
 
 ### Send data from stdin
 
 ```sh
-cat ./my.pdf | send2kindle --smtp-server smtp.gmail.com:587 --smtp-username your_email@gmail.com --smtp-password your_password --kindle-email your_kindle@kindle.com --stdin --filename "renamed.my.pdf"
+cat ./my.pdf | send2kindle --smtp-server "smtp.gmail.com:587" --smtp-username "your_email@gmail.com" --smtp-password "your_password" --kindle-email "your_kindle@kindle.com" --stdin --filename renamed.my.pdf
 ```
