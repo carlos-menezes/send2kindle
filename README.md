@@ -1,5 +1,9 @@
 # send2kindle
 
+```sh
+cargo install send2kindle
+```
+
 `send2kindle` is a command-line utility to send documents to your Kindle.
 
 ## Prerequisites
