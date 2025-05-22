@@ -759,7 +759,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "send_to_kindle"
+name = "send2kindle"
 version = "0.1.0"
 dependencies = [
  "clap",

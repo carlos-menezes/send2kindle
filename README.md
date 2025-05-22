@@ -1,6 +1,6 @@
 # send2kindle
 
-`send2kindle` is a command-line utility to send documents to your Kindle email address.
+`send2kindle` is a command-line utility to send documents to your Kindle.
 
 ## Prerequisites
 
